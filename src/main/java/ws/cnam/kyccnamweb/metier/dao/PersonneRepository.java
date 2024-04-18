@@ -2,10 +2,10 @@ package ws.cnam.kyccnamweb.metier.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import ws.cnam.kyccnamweb.metier.entities.Personne;
+import ws.cnam.kyccnamweb.metier.entities.PersonneAssure;
 
-public interface PersonneRepository extends JpaRepository<Personne, String>, JpaSpecificationExecutor<Personne>{
+public interface PersonneRepository extends JpaRepository<PersonneAssure, String>, JpaSpecificationExecutor<PersonneAssure>{
 
-	Personne findByNni(String nni);
+	PersonneAssure findByNni(String nni);
 
 }

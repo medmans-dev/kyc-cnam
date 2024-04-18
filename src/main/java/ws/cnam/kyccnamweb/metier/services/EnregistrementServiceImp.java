@@ -11,9 +11,9 @@ import ws.cnam.kyccnamweb.metier.dao.HistoriqueCardPersonRepository;
 import ws.cnam.kyccnamweb.metier.dao.PersonneRepository;
 import ws.cnam.kyccnamweb.metier.entities.CardPerson;
 import ws.cnam.kyccnamweb.metier.entities.HistoriqueCardPerson;
-import ws.cnam.kyccnamweb.metier.entities.Personne;
+import ws.cnam.kyccnamweb.metier.entities.PersonneAssure;
 import ws.cnam.kyccnamweb.metier.vo.CardPersonVO;
-import ws.cnam.kyccnamweb.metier.vo.PersonneVO;
+import ws.cnam.kyccnamweb.metier.vo.PersonneAssureVO;
 
 
 import java.io.IOException;
@@ -21,9 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Locale;
 
 /**
  * 
@@ -82,15 +80,15 @@ public class EnregistrementServiceImp implements EnregistrementService {
 	}
 
 	@Override
-	public PersonneVO getPersonneByNni(String nni) {
+	public PersonneAssureVO getPersonneByNni(String nni) {
 		try {
-			PersonneVO personneVO = null;
-			Personne personne = this.personneRepository.findByNni(nni);
-			if(personne==null)
+			PersonneAssureVO personneAssureVO = null;
+			PersonneAssure personneAssure = this.personneRepository.findByNni(nni);
+			if(personneAssure ==null)
 				return null;
-			personneVO = new DozerBeanMapper().map(personne, PersonneVO.class);
+			personneAssureVO = new DozerBeanMapper().map(personneAssure, PersonneAssureVO.class);
 
-			return personneVO;
+			return personneAssureVO;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

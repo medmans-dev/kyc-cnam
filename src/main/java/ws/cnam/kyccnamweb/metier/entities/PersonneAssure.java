@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 
 
 /**
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity(name="PERSONNE")
-public class Personne {
+public class PersonneAssure {
 	
 	@Id
 	@EqualsAndHashCode.Include
@@ -25,9 +26,16 @@ public class Personne {
 	private String nom;
 	private String prenom;
 	private String perePrenom;
+	private String nomAr;
+	private String prenomAr;
+	private String perePrenomAr;
 	private String dateNaissance;
 	private String lieuNaissance;
 	private String matriculeCnam;
+	@ManyToOne
+	private EntiteSante entiteSante;
+	@ManyToOne
+	private ServiceMedical serviceMedical;
 	private String telephone;
 	private String sexe;
 	private String etat;
@@ -35,13 +43,15 @@ public class Personne {
 	private String photo;
 	private byte[] photoArray;
 	@ManyToOne
-	private Personne pere;
+	private PersonneAssure pere;
+	private LocalDateTime dateEnregistrement;
+	private LocalDateTime dateEnvoi;
 	
 	
-	public Personne() {
+	public PersonneAssure() {
 		super();
 	}
-	public Personne(String nni) {
+	public PersonneAssure(String nni) {
 		super();
 		this.nni = nni;
 	}

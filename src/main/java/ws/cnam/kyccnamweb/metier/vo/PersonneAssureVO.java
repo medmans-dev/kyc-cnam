@@ -4,6 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Med.Mansour.GUEYE
  *
@@ -11,12 +13,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class PersonneVO {
+public class PersonneAssureVO {
 	@EqualsAndHashCode.Include
 	private String nni;
 	private String nom;
 	private String prenom;
 	private String perePrenom;
+	private String nomAr;
+	private String prenomAr;
+	private String perePrenomAr;
 	private String dateNaissance;
 	private String lieuNaissance;
 	private String matriculeCnam;
@@ -26,13 +31,16 @@ public class PersonneVO {
 	private String statut;
 	private String photo;
 	private byte[] photoArray;
-	private PersonneVO pere;
-	
-	
-	public PersonneVO() {
+	private PersonneAssureVO pere;
+	private EntiteSanteVO entiteSante;
+	private ServiceMedicalVO serviceMedical;
+	private LocalDateTime dateEnregistrement;
+	private LocalDateTime dateEnvoi;
+
+	public PersonneAssureVO() {
 		super();
 	}
-	public PersonneVO(String nni) {
+	public PersonneAssureVO(String nni) {
 		super();
 		this.nni = nni;
 	}

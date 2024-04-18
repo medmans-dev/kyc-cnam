@@ -4,16 +4,12 @@
 package ws.cnam.kyccnamweb.metier.rest;
 
 
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ws.cnam.kyccnamweb.metier.dao.CardPersonRepository;
-import ws.cnam.kyccnamweb.metier.dao.HistoriqueCardPersonRepository;
-import ws.cnam.kyccnamweb.metier.entities.CardPerson;
 import ws.cnam.kyccnamweb.metier.services.EnregistrementService;
 import ws.cnam.kyccnamweb.metier.vo.*;
 
@@ -46,7 +42,7 @@ public class ApiRestController {
 //				api.setStatut("403");
 //				return api;
 //			}
-			PersonneVO personne = this.enregistrementService.getPersonneByNni(param.getValue());
+			PersonneAssureVO personne = this.enregistrementService.getPersonneByNni(param.getValue());
 			if(personne==null){
 				api = new ApiVO();
 				api.setMessage("Aucune données trouvées.");
@@ -64,7 +60,7 @@ public class ApiRestController {
 		return api;
 	}
 
-	private ApiVO setApi(PersonneVO personne) {
+	private ApiVO setApi(PersonneAssureVO personne) {
 		ApiVO api = new ApiVO();
 		api.setEtat(personne.getEtat());
 		api.setMessage("Success");
