@@ -68,6 +68,9 @@ public class ApiRestController {
 		api.setNom(personne.getNom());
 		api.setPrenom(personne.getPrenom());
 		api.setPerePrenom(personne.getPerePrenom());
+		api.setNomAr(personne.getNomAr());
+		api.setPrenomAr(personne.getPrenomAr());
+		api.setPerePrenomAr(personne.getPerePrenomAr());
 		api.setDateNaissance(personne.getDateNaissance());
 		api.setLieuNaissance(personne.getLieuNaissance());
 		api.setMatriculeCnam(personne.getMatriculeCnam());
@@ -75,6 +78,10 @@ public class ApiRestController {
 		api.setSexe(personne.getSexe());
 		api.setPhoto(personne.getPhoto());
 		api.setStatut(personne.getStatut());
+		if(personne.getEntiteSante()!=null)
+			api.setEntiteSante(personne.getEntiteSante().getNom());
+		if(personne.getServiceMedical()!=null)
+			api.setServiceMedical(personne.getServiceMedical().getNom());
 
 		return api;
 	}
